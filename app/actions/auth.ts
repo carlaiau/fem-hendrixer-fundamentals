@@ -39,10 +39,11 @@ export type ActionResponse = {
   error?: string
 }
 
-export const signin = async (formData: FormData): Promise<ActionResponse> => {
+export const signIn = async (formData: FormData): Promise<ActionResponse> => {
   try {
+    const email = formData.get('email') as string
     const data = {
-      email: formData.get('email') as string,
+      email,
       password: formData.get('password') as string,
     }
 
@@ -56,7 +57,7 @@ export const signin = async (formData: FormData): Promise<ActionResponse> => {
       }
     }
 
-    const user = await getUserByEmail()
+    const user = await getUserByEmail(email)
 
     if (!user) {
       return {
@@ -96,7 +97,7 @@ export const signin = async (formData: FormData): Promise<ActionResponse> => {
   }
 }
 
-export const signup = async (formData: FormData) => {
+export const signUp = async (formData: FormData) => {
   try {
     const data = {
       email: formData.get('email') as string,
