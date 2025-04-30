@@ -38,7 +38,7 @@ export type ActionResponse = {
 export async function createIssue(data: IssueData): Promise<ActionResponse> {
   try {
     // Security check - ensure user is authenticated
-    await mockDelay(700)
+
     const user = await getCurrentUser()
     if (!user) {
       return {
@@ -87,7 +87,7 @@ export async function updateIssue(
 ): Promise<ActionResponse> {
   try {
     // Security check - ensure user is authenticated
-    await mockDelay(700)
+
     const user = await getCurrentUser()
     if (!user) {
       return {
@@ -139,7 +139,7 @@ export async function updateIssue(
 export async function deleteIssue(id: number) {
   try {
     // Security check - ensure user is authenticated
-    await mockDelay(700)
+
     const user = await getCurrentUser()
     if (!user) {
       throw new Error('Unauthorized')
